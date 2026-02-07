@@ -16,11 +16,14 @@ An AI-powered web application that reviews and edits contracts based on user ins
 - HTML / CSS / JavaScript
 - Jinja2 templates
 
+## Live Demo
+(Added after deployment)
+## Run Locally
+
 ## Contributors
 - **Hiba Arshad** — Development & Design  
 - **Charbel Mezawi** — Development  
 - **Faiz Kaleem** — Idea & Concept
 
-## Run Locally
 ```bash
 uvicorn main:app --reload
