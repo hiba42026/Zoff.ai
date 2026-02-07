@@ -1,0 +1,19 @@
+# -------- Secrets --------
+.env
+*.env
+
+# -------- Python --------
+__pycache__/
+*.pyc
+
+# -------- Uploaded files --------
+uploads/
+outputs/
+
+# -------- OS junk --------
+.DS_Store
+Thumbs.db
+
+# -------- IDE --------
+.vscode/
+.idea/
