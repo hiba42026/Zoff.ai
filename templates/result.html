@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reviewed Contract</title>
+  <button class="theme-toggle" onclick="toggleTheme()">
+  🌓 Toggle theme
+</button>
+
+  <link rel="stylesheet" href="/static/styles.css">
+
+  <style>
+    mark {
+      background: #fde047;
+      
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header class="app-header">
+  <h1>Zoff<span>.AI</span></h1>
+  <p class="tagline">
+    AI‑powered contract review with clear, trackable changes
+  </p>
+</header>
+  <h1>Reviewed Contract</h1>
+  <p class="subtitle">
+    AI‑highlighted changes are shown below. You may freely edit before downloading.
+  </p>
+
+  <!-- DOWNLOAD FINAL DOCX -->
+  <form method="post" action="/download-edit" onsubmit="syncForDownload()">
+
+    <div
+      id="editor"
+      contenteditable="true"
+      style="
+        width:100%;
+        height:420px;
+        padding:16px;
+        border-radius:10px;
+        white-space:pre-wrap;
+        line-height:1.6;
+        outline:none;
+        border:1px solid #334155;
+        overflow-y:auto;
+      "
+    >{{ contract | safe }}</div>
+
+    <!-- plain text ONLY for Word -->
+    <textarea name="text" id="downloadText" style="display:none;"></textarea>
+
+    <button type="submit" style="margin-top:20px;">
+      ⬇ Download Final Contract (.docx)
+    </button>
+  </form>
+
+  <hr style="margin:40px 0; border-color:#334155">
+
+  <!-- APPLY MORE AI CHANGES -->
+  <form method="post" action="/process" onsubmit="syncForAI()">
+    <input type="hidden" name="contract_text" id="contractHTML">
+
+    <textarea
+      name="change_instructions"
+      placeholder="Add more changes (e.g. add termination clause)"
+      style="width:100%; height:120px; padding:16px; border-radius:10px;"
+    ></textarea>
+
+    <button type="submit" style="margin-top:16px;">
+      ✨ Apply More AI Changes
+    </button>
+  </form>
+
+  <a href="/" style="display:block; margin-top:30px;">
+    ← Upload another contract
+  </a>
+</div>
+
+<script>
+/* DOWNLOAD: strip highlights */
+function syncForDownload() {
+  document.getElementById("downloadText").value =
+    document.getElementById("editor").innerText;
+}
+
+/* AI PROCESSING: preserve highlights */
+function syncForAI() {
+  document.getElementById("contractHTML").value =
+    document.getElementById("editor").innerHTML;
+}
+</script>
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute("data-theme");
+
+  if (current === "dark") {
+    html.removeAttribute("data-theme");
+    localStorage.removeItem("theme");
+  } else {
+    html.setAttribute("data-theme", "dark");
+    localStorage.setItem("theme", "dark");
+  }
+}
+
+/* Persist theme */
+(function () {
+  if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+})();
+</script>
+<footer class="app-footer">
+  <p>
+    Built by <strong>Hiba Arshad</strong> & <strong>Charbel Mezawi</strong><br>
+    Idea by <strong>Faiz Kaleem</strong>
+  </p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,319 @@
+/* ==============================
+   CSS VARIABLES (THEMES)
+   ============================== */
+
+/* Light mode (default) */
+:root {
+  --bg-main: #f5f7f6;
+  --bg-panel: #ffffff;
+  --bg-editor: #ffffff;
+
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+
+  --border: #d1d5db;
+
+  --primary: #6b8f71;        /* sage green */
+  --primary-hover: #5a7d61;
+
+  --highlight: #d9ead3;      /* sage highlight */
+  --highlight-text: #1f2937;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --bg-main: #1c1f1e;
+  --bg-panel: #262a28;
+  --bg-editor: #262a28;
+
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+
+  --border: #3f4442;
+
+  --primary: #7ca982;
+  --primary-hover: #6b9b72;
+
+  --highlight: #3f5f4b;
+  --highlight-text: #ecfdf5;
+}
+
+/* ---------- Header ---------- */
+.app-header {
+  margin-bottom: 40px;
+}
+
+.app-header h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.app-header h1 span {
+  color: var(--primary);
+}
+
+.tagline {
+  margin-top: 8px;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 520px;
+}
+
+
+/* ---------- Base ---------- */
+body {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  margin: 0;
+  padding: 40px;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ---------- Layout ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* ---------- Typography ---------- */
+h1 {
+  font-size: 2.4rem;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+
+.subtitle {
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  font-size: 1rem;
+}
+
+/* ---------- Panels ---------- */
+.panel {
+  background: var(--bg-panel);
+  padding: 22px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Upload ---------- */
+.upload {
+  margin-bottom: 28px;
+}
+
+/* ---------- Buttons ---------- */
+button,
+.upload button {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: #ffffff;
+  border: none;
+  padding: 11px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  opacity: 0.95;
+}
+
+button:disabled {
+  background: var(--border);
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+/* Dark mode toggle */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* ---------- Text Areas ---------- */
+textarea {
+  width: 95%;
+  height: 120px;
+  border-radius: 10px;
+  padding: 12px;
+  background: var(--bg-panel);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  resize: vertical;
+  font-size: 0.95rem;
+}
+
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* ---------- Code / Contract Text ---------- */
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-height: 520px;
+  overflow-y: auto;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  background: var(--bg-editor);
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid var(--border);
+}
+
+/* ---------- Change Blocks ---------- */
+.change {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+}
+
+/* ---------- Highlighted AI Changes ---------- */
+mark,
+.highlight {
+  background: var(--highlight);
+  color: var(--highlight-text);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* ---------- Links ---------- */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Action Bar ---------- */
+.action-bar {
+  display: flex;
+  gap: 14px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Button Base ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+/* ---------- Primary (Download) ---------- */
+.btn.primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Secondary ---------- */
+.btn.secondary {
+  background: var(--bg-panel);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+}
+
+.btn.secondary:hover {
+  border-color: var(--primary);
+}
+
+/* ---------- Click Animation ---------- */
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ---------- Animations ---------- */
+.panel {
+  animation: fadeIn 0.35s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Editor ---------- */
+#editor mark {
+  background: var(--highlight);
+  color: var(--highlight-text);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.contract-editor {
+  width: 100%;
+  height: 420px;
+  padding: 16px;
+  border-radius: 12px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  background: var(--bg-editor);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+}
+
+.app-footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.app-footer p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
